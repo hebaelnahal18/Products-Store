@@ -1,0 +1,435 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Products Store</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <!-- My CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+  <!-- ================= Navbar ================= -->
+
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container">
+
+      <a class="navbar-brand fw-bold" href="#">
+        <span class="brand-icon">
+          <i class="bi bi-bag-heart-fill"></i>
+        </span>
+        Shoply
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto gap-lg-3">
+
+          <li class="nav-item">
+            <a class="nav-link active" href="#" id="home">
+              Home
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#products" id="productsBtn">
+              Products
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#favorite" id="favorite">
+              Favorite
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="#cart" id="cartBtn">
+              Cart
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <!-- ================= Hero ================= -->
+
+  <section class="hero-section" id="hero">
+
+    <div class="container">
+
+      <div class="row align-items-center">
+
+        <div class="col-lg-7">
+
+          <span class="hero-badge">
+            <i class="bi bi-stars"></i>
+            Discover something you love
+          </span>
+
+          <h1 class="hero-title">
+            Find products
+            <span>you'll love.</span>
+          </h1>
+
+          <p class="hero-text">
+            Explore our collection and discover products selected just for
+            you.
+          </p>
+
+          <a href="#products" class="btn btn-dark hero-btn">
+            Explore Products
+            <i class="bi bi-arrow-right ms-2"></i>
+          </a>
+
+        </div>
+
+
+        <div class="col-lg-5 d-none d-lg-block">
+
+          <div class="hero-card">
+
+            <div class="hero-card-icon">
+              <i class="bi bi-bag-heart"></i>
+            </div>
+
+            <h5>Fresh Collection</h5>
+
+            <p>Discover our latest products</p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= Products ================= -->
+
+  <section class="products-section" id="products">
+
+    <div class="container">
+
+      <!-- Section Header -->
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            OUR COLLECTION
+          </span>
+
+          <h2>
+            Explore Products
+          </h2>
+
+        </div>
+
+        <p>
+          Find something perfect for you.
+        </p>
+
+      </div>
+
+
+      <!-- ================= Categories ================= -->
+
+      <div class="categories-section mb-5">
+  <label for="categoriesContainer" class="form-label">
+    Categories:
+  </label>
+
+  <select id="categoriesContainer" class="form-select">
+    <option value="">All Categories</option>
+  </select>
+
+      </div>
+
+
+      <!-- ================= Search ================= -->
+
+      <div class="search-box mb-5">
+
+        <div class="input-group">
+
+          <span class="input-group-text">
+            <i class="bi bi-search"></i>
+          </span>
+
+          <input type="text" id="searchInput" class="form-control" placeholder="Search for a product..." />
+
+          <button class="btn btn-dark" id="searchBtn">
+            Search
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <!-- ================= Loading ================= -->
+
+      <div id="loading" class="text-center py-5">
+
+        <div class="spinner-border" role="status">
+        </div>
+
+        <p class="mt-3 text-muted">
+          Loading products...
+        </p>
+
+      </div>
+
+
+      <!-- ================= Products ================= -->
+
+      <div id="productsContainer" class="row g-4">
+      </div>
+      <!-- pagination -->
+      <nav aria-label="Products pagination" class="mt-5">
+  <ul class="pagination justify-content-center" id="pagination">
+<!--     
+    <li class="page-item">
+      <button class="page-link" id="prevBtn">Previous</button>
+    </li>
+
+    <li class="page-item">
+      <button class="page-link" id="nextBtn">Next</button>
+    </li> -->
+
+  </ul>
+</nav>
+
+
+      <!-- ================= No Products ================= -->
+
+      <div id="noProducts" class="text-center py-5 d-none">
+
+        <i class="bi bi-search display-5"></i>
+
+        <h4 class="mt-3">
+          No products found
+        </h4>
+
+        <p class="text-muted">
+          Try searching for something else.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= Modal ================= -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Product Details
+          </h1>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+          </button>
+
+        </div>
+
+        <div class="modal-body" id="modalBody">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= Favorites ================= -->
+
+  <section id="favorites" class="products-section d-none">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            YOUR FAVORITES
+          </span>
+
+          <h2>
+            Favorite Products
+          </h2>
+
+        </div>
+
+        <p>
+          Products you love.
+        </p>
+
+      </div>
+
+
+      <div id="favoritesContainer" class="row g-4">
+      </div>
+
+
+      <div id="noFavorites" class="text-center py-5 d-none">
+
+        <i class="fa-regular fa-heart display-5"></i>
+
+        <h4 class="mt-3">
+          No favorite products
+        </h4>
+
+        <p class="text-muted">
+          You haven't added any products to your favorites yet.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- ================CART ====================-->
+    <section id="cart" class="products-section d-none">
+
+    <div class="container">
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            YOUR CART
+          </span>
+
+          <h2>
+            Cart <i class="fa-solid fa-cart-shopping"></i>
+          </h2>
+
+        </div>
+
+        <p>
+          products you have in Cart
+        </p>
+
+      </div>
+
+
+      <div id="cartContainer" class="row g-4">
+      </div>
+
+
+      <div id="noCart" class="text-center py-5 d-none">
+
+        <i class="fa-regular fa-heart display-5"></i>
+
+        <h4 class="mt-3">
+          No products in Cart
+        </h4>
+
+        <p class="text-muted">
+          You haven't added any products to your Cart yet.
+        </p>
+
+      </div>
+<div id="total" class="mt-4 p-4 border rounded shadow-sm">
+  <div class="d-flex justify-content-between">
+    <p class="mb-2 fw-semibold">Total Items:</p>
+    <p id="totalItems" class="mb-2 fw-bold">0</p>
+  </div>
+
+  <div class="d-flex justify-content-between">
+    <p class="mb-0 fw-semibold">Total Price:</p>
+    <p id="totalPrice" class="mb-0 fw-bold">$0.00</p>
+  </div>
+</div>
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= Footer ================= -->
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <div class="row align-items-center">
+
+        <div class="col-md-6">
+
+          <h5 class="mb-1">
+            Shoply
+          </h5>
+
+          <p class="mb-0">
+            Simple. Modern. Yours.
+          </p>
+
+        </div>
+
+
+        <div class="col-md-6 text-md-end mt-3 mt-md-0">
+
+          <p class="mb-0">
+            © 2026 Shoply. All rights reserved.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- Bootstrap JS -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- My JS -->
+
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>
